@@ -1,0 +1,40 @@
+.table-boletos {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #222222;
+    color: #ffffff;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 5px;
+}
+
+/* Estilo das células de cabeçalho */
+.table-boletos > thead th {
+    padding: 10px;
+    border-bottom: 1px solid #464242;
+}
+
+/* Estilo das células de dados */
+.table-boletos tbody tr {
+    border-bottom: 1px solid #464242;
+    background-color: #aaa9a9;
+}
+
+/* Estilo das linhas alternadas */
+.table-boletos tbody tr:nth-child(even) {
+    background-color: #646363;
+}
+
+/* Estilo das células de dados da última linha */
+.table-boletos > tr:last-child td {
+    border-bottom: none;
+}
+
+.container-table {
+    height: calc(100vh - 85px);
+    width: calc(100% - 20px);
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    overflow-y: auto;
+}

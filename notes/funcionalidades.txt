@@ -1,0 +1,15 @@
+Centralizar BI do Evo
+    Estudar funcionalidades
+
+Gerar faturamento por boleto
+    Resumo de valores (por enpresa)
+    Emissão de boletos em massa
+
+Emitir NFs junto com os boletos
+    Enviar NFs para o financeiro (ver regras de emissão e envio)
+
+Gestão das empresas
+    Exibir informações dos usuários
+
+Recursos auxiliares
+    Bot para conciliação bancária (boleto > evo)
