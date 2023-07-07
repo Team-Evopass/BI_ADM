@@ -1,3 +1,11 @@
+.container-table {
+    height: calc(100vh - 85px);
+    width: calc(100% - 20px);
+    margin-top: 10px;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
 .table-boletos {
     width: 100%;
     border-collapse: collapse;
@@ -5,12 +13,13 @@
     color: #ffffff;
     text-align: center;
     font-size: 13px;
-    border-radius: 5px;
 }
 
 /* Estilo das células de cabeçalho */
+
 .table-boletos > thead th {
-    padding: 10px;
+    height: 40px;
+    padding: 2px;
     border-bottom: 1px solid #464242;
 }
 
@@ -28,13 +37,4 @@
 /* Estilo das células de dados da última linha */
 .table-boletos > tr:last-child td {
     border-bottom: none;
-}
-
-.container-table {
-    height: calc(100vh - 85px);
-    width: calc(100% - 20px);
-    margin-top: 10px;
-    border-radius: 5px;
-    background-color: #ffffff;
-    overflow-y: auto;
 }
