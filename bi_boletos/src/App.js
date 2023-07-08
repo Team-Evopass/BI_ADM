@@ -2,11 +2,13 @@ import React from "react";
 import MyHeader from "./assets/components/MyHeader";
 import MyTable from "./assets/components/MyTable";
 
+
 import seta_direita from "./assets/img/logo-seta-direita.png"
 
 import style from "./assets/css/app/style_app.css"
 import style_amarrar_empresas from "./assets/css/amarrar_empresas/style_amarrar_empresas.css"
 
+// import app_config from "./assets/firebase//app_config"
 
 export default function App() {
   return (
@@ -55,5 +57,6 @@ export default function App() {
       </div>
       <div className="fade-in"></div>
     </div>
+
   );
 }

@@ -1,12 +1,17 @@
 import style from "../css/header/style_header.css"
 
-import api from "../api/member_api.js"
+import download_file from "../download/relatorio";
+import get_members from "../api/member_api"
 
 var logo = "https://academiaevoque.com.br/wp-content/uploads/2023/06/EvoPass2.png"
 
 export default props => {
 
-    function exportar_valores () {
+    async function exportar_valores () {
+
+        var data_members = await get_members()
+        download_file(data_members)
+
         alert('Valores exportados para ti.evopass@gmail.com')
     }
 
@@ -18,7 +23,7 @@ export default props => {
                     <li onClick={ () => {exportar_valores()}} >Exportar valores</li>
                     <li>Grupos econômicos</li>
                     <li>Filtros</li>
-                    <li>Meta</li>
+                    <li>Gerar pagamentos</li>
                 </ul>
             </nav>
         </header>

@@ -1,17 +1,17 @@
 import axios from 'axios'
 
-function get_members () {
+export default async function get_members () {
 
-  let status_exe = false
+  let status_exe = true
   let i = 0
  
   var members = []
 
-  function set_members_table (my_member) {
+  function set_members_data (my_member) {
     members.push(my_member)
   }
 
-  while (status_exe == false) {
+  while (status_exe == true) {
     
     var options = {
       method: 'GET',
@@ -23,10 +23,13 @@ function get_members () {
       }
     };
     
-    axios.request(options).then(function (response) {
+    await axios.request(options).then(function (response) {
       
       var tempi = response.data
-      //console.log(response.data);
+      
+      if (tempi.length == 0) {
+       status_exe = false
+      }
       
       for (var j = 0; j < tempi.length; j++) { // pegar o tamanho array que a resposta retornou mano (prestar atenção aos erros de dicionário)
 
@@ -75,7 +78,7 @@ function get_members () {
         }
 
         member.push(grupo, grupo, cnpj_empresa, responsavel, nome, tipo, cpf, telefone, metodo, pago_por, inicio_vigencia, user_status)
-        set_members_table(member)
+        set_members_data(member)
 
       }
 
@@ -87,20 +90,12 @@ function get_members () {
     
     i = i + 50
     
-    if ( i > 200 ) {
-      status_exe = true
-    }
-    
   }
 
-  console.log("Saiu do while")
+  members.sort(function(a, b) {
+    return a[0].localeCompare(b[0], 'pt', { sensitivity: 'base' });
+  });
 
-  console.log(members)
-  
-  // console.table(members)
+  return (members)
 
 }
-
-get_members()
-
-
