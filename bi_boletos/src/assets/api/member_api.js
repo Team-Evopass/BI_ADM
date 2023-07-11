@@ -45,6 +45,16 @@ export default async function get_members () {
 
         try {
           var metodo = tempi[j].memberships[tempi[j].memberships.length - 1].name //Pegando o tipo de cobrança do plano (evopass e evopass recorrente)
+          if (metodo == "EVOPASS ") {
+            metodo = "FOPAG"
+            var pago_por = "BOLETO"
+          } else if (metodo == "EVOPASS RECORRENTE") {
+            metodo = "DIRETO"
+            var pago_por = "CRÉDITO"
+          } else if (true) {
+            metodo = "Error"
+          }
+
         } catch {
           console.log('Erro ao acessar o metodo de pagamento - ' + id_member)
         }
@@ -55,9 +65,26 @@ export default async function get_members () {
         //   Metodo
         // }
 
-        var pago_por = "programar interação (crédito e boleto)"
-        var inicio_vigencia = "programar interação"
-        var user_status = "programar interação"
+        
+        var inicio_vigencia = "01/10/2023"
+        var contratos = tempi[j].memberships
+        console.log(contratos)
+
+        var member_status_defined = ""
+
+        const member_status = contratos.map(contrato => {
+          return (contrato.membershipStatus)
+        })
+
+        
+ 
+        var isFound = member_status.indexOf("active") !== -1;
+        if (isFound === true) {
+          member_status_defined = "Ativo"
+        } else if (true) {
+          member_status_defined = "Inativo"
+        }
+
 
         try {
           
@@ -77,7 +104,7 @@ export default async function get_members () {
           console.log('Erro no cpf do titular ---------- ' + tempi[j].idMember)
         }
 
-        member.push(grupo, grupo, cnpj_empresa, responsavel, nome, tipo, cpf, telefone, metodo, pago_por, inicio_vigencia, user_status)
+        member.push(grupo, grupo, cnpj_empresa, responsavel, nome, tipo, cpf, telefone, metodo, pago_por, inicio_vigencia, member_status_defined)
         set_members_data(member)
 
       }
