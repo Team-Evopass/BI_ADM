@@ -1,7 +1,6 @@
-import style from '../css/table/style_table.css'
+import style from  '../../css/table/style_table.css'
 
-import get_members from "../api/member_api.js"
-
+import get_members from "../../api/member_api.js"
 var data_members = await get_members()
 
 export default props => {
@@ -25,7 +24,6 @@ export default props => {
             </tr>
         )
     })
-
 
     return (
 

@@ -1,7 +1,9 @@
-import style from "../css/header/style_header.css"
+import React from 'react';
 
-import download_file from "../download/relatorio";
-import get_members from "../api/member_api"
+import style from "../../css/common/style_header.css"
+
+import download_file from "../../download/relatorio";
+import get_members from "../../api/member_api"
 
 var logo = "https://academiaevoque.com.br/wp-content/uploads/2023/06/EvoPass2.png"
 
@@ -21,7 +23,7 @@ export default props => {
                 <img src= {logo} alt="" className="logo-empresa" />
                 <ul className="list-buttons">
                     <li onClick={ () => {exportar_valores()}} >Exportar valores</li>
-                    <li>Grupos econômicos</li>
+                    <li>Empresas</li>
                     <li>Filtros</li>
                     <li>Gerar pagamentos</li>
                 </ul>

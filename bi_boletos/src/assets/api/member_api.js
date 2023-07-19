@@ -44,31 +44,38 @@ export default async function get_members () {
         var responsavel = "programar interação" //
 
         try {
-          var metodo = tempi[j].memberships[tempi[j].memberships.length - 1].name //Pegando o tipo de cobrança do plano (evopass e evopass recorrente)
-          if (metodo == "EVOPASS ") {
-            metodo = "FOPAG"
-            var pago_por = "BOLETO"
-          } else if (metodo == "EVOPASS RECORRENTE") {
-            metodo = "DIRETO"
-            var pago_por = "CRÉDITO"
-          } else if (true) {
-            metodo = "Error"
-          }
+
+          var pago_por = ""
+          var metodo = ""
+
+          tempi[j].memberships.map(contrato => {
+
+            if  (contrato.membershipStatus == "active") {
+              if (contrato.name == "EVOPASS ") {
+
+                pago_por = "BOLETO"
+                metodo = "FOPAG"
+
+              } else if (contrato.name == "EVOPASS RECORRENTE") {
+
+                pago_por = "CRÉDITO"
+                metodo = "DIRETO"
+
+              } else if (true) {
+                pago_por = "Error"
+                metodo = "Error"
+              }
+            }
+
+          })
 
         } catch {
-          console.log('Erro ao acessar o metodo de pagamento - ' + id_member)
+          console.log('Erro ao acessar os contratos - ' + id_member)
         }
-
-        // if (metodo == "EVOPASS ") {
-        //   metodo = "Boleto"
-        // } else if (metodo == "") {
-        //   Metodo
-        // }
 
         
         var inicio_vigencia = "01/10/2023"
         var contratos = tempi[j].memberships
-        console.log(contratos)
 
         var member_status_defined = ""
 
@@ -101,7 +108,7 @@ export default async function get_members () {
           }
 
         } catch {
-          console.log('Erro no cpf do titular ---------- ' + tempi[j].idMember)
+          console.log('Erro ao acessar o responsável ---------- ' + tempi[j].idMember)
         }
 
         member.push(grupo, grupo, cnpj_empresa, responsavel, nome, tipo, cpf, telefone, metodo, pago_por, inicio_vigencia, member_status_defined)
